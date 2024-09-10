@@ -1,10 +1,14 @@
+import {Switch, Route} from 'react-router-dom'
+
+
 function App() {
 
   return (
-    <div>
-      <h2>HOLA</h2>
-      
-    </div>
+    <>
+      <Switch>
+        <Route />
+      </Switch>
+    </>
   );
 }
 
