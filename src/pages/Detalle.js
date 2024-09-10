@@ -1,7 +1,11 @@
-const detalle = () => {
+import Detallefinal from "../components/Detalle/Detalle"
+
+const Detalle = () => {
   return (
-    <div>detalle</div>
+    <section>
+      <Detallefinal />
+    </section>
   )
 }
 
-export default detalle
+export default Detalle;
