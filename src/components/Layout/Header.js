@@ -6,7 +6,8 @@ const Header = () => {
     return (
         <header className="header">
           <div className="logo">
-            <h1> MoviesWatch </h1>
+            <img src="/image/logo.png" alt="Logo de la aplicación" className="logo-image" />
+            <h1 className="app-title"> MoviesWatch </h1>
           </div>
           <nav>
             <ul className="nav-links">
