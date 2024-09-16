@@ -1,4 +1,3 @@
-/* Estilos generales */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,7 +6,6 @@ body, html {
     color: #333;
   }
   
-  /* Encabezados */
   h1 {
     text-align: center;
     color: #34495e;
@@ -15,7 +13,6 @@ body, html {
     font-size: 36px;
   }
   
-  /* Responsividad */
   @media (max-width: 768px) {
     .movies-list {
       flex-direction: column;
