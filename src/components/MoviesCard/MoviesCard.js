@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './MoviesCard.css';  
+import './MoviesCard.css';
 
 class MoviesCard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showDescription: false, 
-      isFavorite: false       
+      showDescription: false,
+      isFavorite: false
     };
   }
 
@@ -34,7 +34,7 @@ class MoviesCard extends Component {
           alt={movie.title}
           className="movie-image"
         />
-        
+
         <h3>{movie.title}</h3>
 
         {showDescription && <p>{movie.overview}</p>}
