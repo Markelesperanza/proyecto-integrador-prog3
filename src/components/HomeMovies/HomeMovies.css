@@ -1,0 +1,28 @@
+.home-movies {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+  }
+  
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+.error-message {
+    color: red;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+.no-movies {
+    font-size: 18px;
+    text-align: center;
+    color: #7f8c8d;
+  }
+  

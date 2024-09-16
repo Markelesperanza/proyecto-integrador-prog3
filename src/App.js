@@ -1,10 +1,12 @@
-import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Detalle from './pages/detalle';
-import Favoritos from './pages/Favoritos';
-import VerTodas from './pages/VerTodas';
+import React from 'react';
+import Navbar from './components/Navbar/Navbar'; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
+import Header from './components/Layout/Header';  
+import Footer from './components/Layout/Footer'; 
+import Detalle from './pages/Detalle';  
+//import Favoritos from './pages/Favoritos'; 
+// import VerTodas from 'pages/VerTodas';  
+import Home from './pages/Home';  
 
 function App() {
   return (
@@ -14,20 +16,16 @@ function App() {
         <div className="App">
           <Header />
           <main>
-            <Switch>
-              <Route exact path="/" component={() => <h1>Bienvenido a My Movie App</h1>} />
-              <Route path="/favoritos" component={Favoritos} />
-              <Route path="/all-movies" component={VerTodas} />
-              <Route path="/detalle/:id" component={Detalle} />
-            </Switch>
+            <Routes>  
+              <Route exact path="/" element={<Home />} />  
+              <Route path="/detalle/:id" element={<Detalle />} />  
+            </Routes>
           </main>
           <Footer />
         </div>
       </Router>
     </>
-    
   );
 }
 
 export default App;
-

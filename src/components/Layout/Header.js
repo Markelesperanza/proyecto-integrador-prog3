@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <header className="header">
           <div className="logo">
-            <h1>My Movie App</h1>
+            <h1> MoviesWatch </h1>
           </div>
           <nav>
             <ul className="nav-links">
@@ -14,6 +14,12 @@ const Header = () => {
               <li><Link to="/favoritos">Favoritos</Link></li>
               <li><Link to="/all-movies">Ver todas</Link></li>
             </ul>
+
+            <form action="" method="GET" className="form">
+                <input type="text" name="" placeholder="Buscar Peliculas" />
+                <button type="submit">Buscar</button>
+            </form>
+
           </nav>
         </header>
     
