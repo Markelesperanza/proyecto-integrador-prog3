@@ -1,10 +1,14 @@
+import {Routes, Route} from 'react-router-dom'
+import Detalle from './pages/Detalle';
+
 function App() {
 
   return (
-    <div>
-      <h2>HOLA</h2>
-      
-    </div>
+    <>
+      <Routes>
+        <Route path="/detalle/:id" element={<Detalle />}/>
+      </Routes>
+    </>
   );
 }
 
