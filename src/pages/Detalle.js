@@ -1,4 +1,4 @@
-import Detallefinal from "../components/Detalle/Detalle"
+import Detallefinal from "../components/DetalleMovie/DetalleMovie"
 
 const Detalle = () => {
   return (
