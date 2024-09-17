@@ -8,7 +8,7 @@ import Populares from './pages/Populares'
 //import Favoritos from './pages/Favoritos'; 
 // import VerTodas from 'pages/VerTodas';  
 import Home from './pages/Home';  
-
+import FilterGenre from './pages/FilterGenre';
 function App() {
   return (
     <>
@@ -21,6 +21,7 @@ function App() {
               <Route exact path="/" element={<Home />} />  
               <Route path="/detalle/:id" element={<Detalle />} />
               <Route path="/all-popular-movies" element={<Populares/>}/> 
+              <Route path="/filter/:genreId" element = {<FilterGenre/>}/>
             </Routes>
           </main>
           <Footer />
