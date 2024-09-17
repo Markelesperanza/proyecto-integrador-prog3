@@ -8,7 +8,7 @@ const FilterGenre = ({ match }) => {
 
     return (
         <div>
-            <h1>Películas filtradas</h1>
+            <h1>Películas del genero elegido</h1>
             <MoviesGrid url={url} />
         </div>
     );
