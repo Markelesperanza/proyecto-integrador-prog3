@@ -13,6 +13,7 @@ class MoviesGrid extends Component {
             selectedGenre: '',
             loading: true,
             error: null,
+            currentPage: 1,
         };
     }
 
@@ -51,11 +52,41 @@ class MoviesGrid extends Component {
 
     }
 
+
     GenreChange = (event) => {
         const selectedGenre = event.target.value;
         this.setState({ selectedGenre });
 
         
+    };
+    
+    cargarMasPelis = () => {
+        const { url } = this.props;
+        const { currentPage, movies } = this.state;
+
+        fetch(`${url}&page=${currentPage + 1}`, options)
+            .then((response) => response.json())
+            .then((data) => {
+               
+                const pelisActualizado = [];
+                for (let i = 0; i < movies.length; i++) {
+                    pelisActualizado.push(movies[i]); 
+                }
+                for (let i = 0; i < data.results.length; i++) {
+                    pelisActualizado.push(data.results[i]);  
+                }
+
+                this.setState({
+                    movies: pelisActualizado,  
+                    currentPage: currentPage + 1, 
+                });
+            })
+            .catch((error) => {
+                this.setState({
+                    error,
+                });
+                console.error('Error al cargar más películas:', error);
+            });
     };
 
     render() {
@@ -92,6 +123,12 @@ class MoviesGrid extends Component {
                     <MoviesCard key={index} movie={movie} />
 
                 ))}
+            </div>
+            
+            <div className="load-more-container">
+                    <button onClick={this.cargarMasPelis} className="load-more-button">
+                        Cargar más
+                    </button>
             </div>
             </>
         );

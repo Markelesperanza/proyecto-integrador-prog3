@@ -22,12 +22,18 @@ class HomeMovies extends Component {
       .then((response) => response.json())
       .then((data) => {
         if (data && data.results) {
-          this.setState({ movies: data.results.slice(0, 5) }); 
+          this.setState({ movies: data.results.slice(0, 4) 
+          }); 
         } else {
-          this.setState({ movies: [] });
+          this.setState({ 
+            movies: [] 
+          });
         }
       })
-      .catch((error) => this.setState({ error: 'Error al cargar las películas' }));
+      .catch((error) => this.setState({ 
+        error: 'Error al cargar las películas' 
+      })
+    );
   };
 
   render() {

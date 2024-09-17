@@ -5,6 +5,7 @@ import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Detalle from './pages/Detalle';
 import Populares from './pages/Populares'
+import Cartelera from './pages/Cartelera'
 //import Favoritos from './pages/Favoritos'; 
 // import VerTodas from 'pages/VerTodas';  
 import Home from './pages/Home';
@@ -23,7 +24,9 @@ function App() {
             <Route exact path="/" component={ Home } />
             <Route path="/detalle/:id" component={ Detalle } />
             <Route path="/all-popular-movies" component={ Populares } />
+            <Route path="/all-cartelera-movies" component={ Cartelera } />
             <Route path="/filter/:genreId" component={ FilterGenre } />
+
           </Switch>
         </main>
 
