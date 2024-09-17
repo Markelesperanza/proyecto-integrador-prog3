@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { options } from "../../options";
-
 import './MoviesGrid.css';
 
 class MoviesGrid extends Component {
@@ -8,27 +7,37 @@ class MoviesGrid extends Component {
         super(props);
         this.state = {
             movies: [],
+            loading: true, 
             error: null,
         };
     }
 
-
     componentDidMount() {
-        const { url, options } = this.props;
+        const { url } = this.props;
 
         fetch(url, options)
             .then((response) => response.json())
             .then((data) => {
-                this.setState({ movies: data.results });
+                this.setState({ 
+                    movies: data.results, 
+                    loading: false 
+                });
             })
             .catch((error) => {
-                this.setState({ error });
+                this.setState({ 
+                    error, 
+                    loading: false 
+                });
                 console.error('Error fetching data:', error);
             });
     }
 
     render() {
-        const { movies, error } = this.state;
+        const { movies, loading, error } = this.state;
+
+        if (loading) {
+            return <div>Cargando películas...</div>; 
+        }
 
         if (error) {
             return <div>Error al cargar las películas: {error.message}</div>;
