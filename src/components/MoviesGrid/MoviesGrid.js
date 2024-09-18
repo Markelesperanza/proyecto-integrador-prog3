@@ -52,6 +52,27 @@ class MoviesGrid extends Component {
 
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        const { url } = this.props;
+        const { selectedGenre } = this.state;
+
+        if (prevState.selectedGenre !== selectedGenre) {
+            const nuevoUrl = selectedGenre
+                ? `${url}&with_genres=${selectedGenre}`
+                : url;
+
+            fetch(nuevoUrl, options)
+                .then((response) => response.json())
+                .then((data) => {
+                    this.setState({ movies: data.results });
+                })
+                .catch((error) => {
+                    this.setState({ error });
+                    console.error('Error al actualizar las películas:', error);
+                });
+        }
+    }
+
 
     GenreChange = (event) => {
         const selectedGenre = event.target.value;
@@ -113,9 +134,7 @@ class MoviesGrid extends Component {
                                 </option>
                             ))}
                         </select>
-                        <Link to={`/filter/${selectedGenre}`}>
-                            <button type="button">Filtrar</button>
-                        </Link>
+                        <Link to={`/filter/${selectedGenre}`}></Link>
                     </form>
                 </div>
             <div className="movies-grid">
