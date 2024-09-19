@@ -10,6 +10,8 @@ import Cartelera from './pages/Cartelera'
 // import VerTodas from 'pages/VerTodas';  
 import Home from './pages/Home';
 import FilterGenre from './pages/FilterGenre';
+import NotFound from './components/NotFound/NotFound';
+
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
             <Route path="/all-popular-movies" component={ Populares } />
             <Route path="/all-cartelera-movies" component={ Cartelera } />
             <Route path="/filter/:genreId" component={ FilterGenre } />
+            <Route component={ NotFound } />
+
 
           </Switch>
         </main>
