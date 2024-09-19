@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { options } from "../../options";
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesGrid.css';
 
@@ -37,7 +38,7 @@ class MoviesGrid extends Component {
 
 
         const genresUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en-US`;
-        
+
         fetch(genresUrl, options)
             .then((response) => response.json())
             .then((data) => {
@@ -77,9 +78,9 @@ class MoviesGrid extends Component {
         const selectedGenre = event.target.value;
         this.setState({ selectedGenre });
 
-        
+
     };
-    
+
     cargarMasPelis = () => {
         const { url } = this.props;
         const { currentPage, movies } = this.state;
@@ -87,18 +88,18 @@ class MoviesGrid extends Component {
         fetch(`${url}&page=${currentPage + 1}`, options)
             .then((response) => response.json())
             .then((data) => {
-               
+
                 const pelisActualizado = [];
                 for (let i = 0; i < movies.length; i++) {
-                    pelisActualizado.push(movies[i]); 
+                    pelisActualizado.push(movies[i]);
                 }
                 for (let i = 0; i < data.results.length; i++) {
-                    pelisActualizado.push(data.results[i]);  
+                    pelisActualizado.push(data.results[i]);
                 }
 
                 this.setState({
-                    movies: pelisActualizado,  
-                    currentPage: currentPage + 1, 
+                    movies: pelisActualizado,
+                    currentPage: currentPage + 1,
                 });
             })
             .catch((error) => {
@@ -110,7 +111,7 @@ class MoviesGrid extends Component {
     };
 
     render() {
-        const { movies,genres, loading, error, selectedGenre } = this.state;
+        const { movies, genres, loading, error, selectedGenre } = this.state;
 
         if (loading) {
             return <div>Cargando películas...</div>;
@@ -122,7 +123,7 @@ class MoviesGrid extends Component {
 
         return (
             <>
-            <div className="filter">
+                <div className="filter">
                     <form>
                         <label>Filtrar por género: </label>
                         <select value={selectedGenre} onChange={this.GenreChange}>
@@ -133,20 +134,25 @@ class MoviesGrid extends Component {
                                 </option>
                             ))}
                         </select>
+                        <Link to={`/filter/${selectedGenre}`}>
+                            <button type="button" disabled={!selectedGenre}>
+                                Filtrar
+                            </button>
+                        </Link>
                     </form>
                 </div>
-            <div className="movies-grid">
-                {movies.map((movie, index) => (
-                    <MoviesCard key={index} movie={movie} />
+                <div className="movies-grid">
+                    {movies.map((movie, index) => (
+                        <MoviesCard key={index} movie={movie} />
 
-                ))}
-            </div>
-            
-            <div className="load-more-container">
+                    ))}
+                </div>
+
+                <div className="load-more-container">
                     <button onClick={this.cargarMasPelis} className="load-more-button">
                         Cargar más
                     </button>
-            </div>
+                </div>
             </>
         );
     }
