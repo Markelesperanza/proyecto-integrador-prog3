@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { options } from "../../options";
-import { Link } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesGrid.css';
 
@@ -47,7 +46,7 @@ class MoviesGrid extends Component {
                 });
             })
             .catch((error) => {
-                console.error('Error fetching genres:', error);
+                console.error('Error encontrando genres:', error);
             });
 
     }
@@ -134,7 +133,6 @@ class MoviesGrid extends Component {
                                 </option>
                             ))}
                         </select>
-                        <Link to={`/filter/${selectedGenre}`}></Link>
                     </form>
                 </div>
             <div className="movies-grid">
