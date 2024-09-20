@@ -1,60 +1,57 @@
-/* Estilo general para la grilla */
 .movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-    gap: 20px; 
-    padding: 20px; 
-    justify-items: center; 
-  }
-  
-  /* Estilo para cada tarjeta de película */
-  .movie-card {
-    background-color: #f0f0f0; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px; 
-    text-align: center; 
-    overflow: hidden;
-    transition: transform 0.3s ease; 
-  }
-  
-  /* Efecto hover para agrandar la tarjeta */
-  .movie-card:hover {
-    transform: scale(1.05); 
-  }
-  
-  /* Estilo para las imágenes de las películas */
-  .movie-card img {
-    width: 100%; 
-    height: auto; 
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Estilo para el título de la película */
-  .movie-card h3 {
-    font-size: 16px; 
-    margin: 10px 0; 
-    color: #333; 
-  }
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  padding: 20px; 
+  justify-content: center;
+}
 
-  .load-more-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .load-more-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .load-more-button:hover {
-    background-color: #2980b9;
-  }
-  
+
+.movie-card {
+  background-color: #f0f0f0; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px; 
+  text-align: center; 
+  overflow: hidden;
+  transition: transform 0.3s ease; 
+  flex: 1 1 200px; 
+}
+
+.movie-card:hover {
+  transform: scale(1.05); 
+}
+
+
+.movie-card img {
+  width: 100%; 
+  height: auto; 
+  border-bottom: 1px solid #ddd;
+}
+
+
+.movie-card h3 {
+  font-size: 16px; 
+  margin: 10px 0; 
+  color: #333; 
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.load-more-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+
+}
+
+.load-more-button:hover {
+  background-color: #2980b9;
+}
