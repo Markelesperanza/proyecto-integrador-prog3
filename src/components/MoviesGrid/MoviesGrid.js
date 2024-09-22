@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { options } from "../../options";
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import Loader from '../Loader/Loader';
 import './MoviesGrid.css';
 
 class MoviesGrid extends Component {
@@ -114,7 +115,7 @@ class MoviesGrid extends Component {
         const { movies, genres, loading, error, selectedGenre } = this.state;
 
         if (loading) {
-            return <div>Cargando películas...</div>;
+            return <Loader/>;
         }
 
         if (error) {

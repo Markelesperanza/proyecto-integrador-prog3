@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { options } from "../../options";
+import Loader from "../Loader/Loader";
 
 class Detalle extends Component {
 
@@ -26,7 +27,7 @@ class Detalle extends Component {
         const { movie } = this.state;
 
             if(!movie) {
-                return <div>Loading...</div>;
+                return <Loader/>;
             }
 
         return (
