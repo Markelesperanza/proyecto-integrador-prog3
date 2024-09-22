@@ -7,7 +7,6 @@ import Detalle from './pages/Detalle';
 import Populares from './pages/Populares'
 import Cartelera from './pages/Cartelera'
 //import Favoritos from './pages/Favoritos'; 
-// import VerTodas from 'pages/VerTodas';  
 import Home from './pages/Home';
 import FilterGenre from './pages/FilterGenre';
 import SearchResults from './pages/SearchResults';
@@ -29,7 +28,7 @@ function App() {
             <Route path="/all-popular-movies" component={ Populares } />
             <Route path="/all-cartelera-movies" component={ Cartelera } />
             <Route path="/filter/:genreId" component={ FilterGenre } />
-            <Route path="/search/:query" component={SearchResults} /> 
+            <Route path="/search" component={SearchResults} /> 
             <Route component={ NotFound } />
 
 

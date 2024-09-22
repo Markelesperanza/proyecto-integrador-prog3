@@ -1,9 +1,14 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './Header.css';
 import SearchForm from '../SearchForm/SearchForm';
 
 class Header extends Component {
+  componentDidMount() {
+    // Verifica si 'history' se está recibiendo correctamente en props
+    console.log('Header props:', this.props);
+    console.log('Header history:', this.props.history);
+}
   
 
   render() {
@@ -30,4 +35,4 @@ class Header extends Component {
   };
 };
 
-export default Header;
+export default withRouter(Header);

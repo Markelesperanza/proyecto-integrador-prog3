@@ -8,8 +8,14 @@ export class SearchForm extends Component {
         super(props)
 
         this.state = {
-            query: ''
+            query: '',
         }
+    }
+
+    componentDidMount() {
+        // Verifica si 'history' se está recibiendo correctamente en props
+        console.log('SearchForm props:', this.props);
+        console.log('SearchForm history:', this.props.history);
     }
 
     handleInputChange = (event) => {
@@ -19,26 +25,31 @@ export class SearchForm extends Component {
     };
 
     handleInputSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.props);
-        this.props.history.push( '/search', { query: this.state.query });
-    }
+        const {query} = this.state;
+
+        if(query){
+            this.props.history.push('/search', { query });
+        }else{
+            console.log('no se encontro la query');
+            
+        }
+        
+    };
 
 
 
     render() {
+
         return (
             <>
-                <form className="form" onSubmit={this.handleInputSubmit}>
                     <input
-                        onChange={this.handleInputChange}
+                        onChange={(e)=>this.handleInputChange(e)}
                         type="text"
                         name="query"
                         value={this.state.query}
                         placeholder="Buscar película"
                     />
-                    <button type="submit" className="submit-button">Buscar Película</button>
-                </form>
+                    <button onClick={()=>this.handleInputSubmit()}  className="submit-button">Buscar Película</button>
             </>
         )
     }
