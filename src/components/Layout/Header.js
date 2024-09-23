@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import SearchForm from '../SearchForm/SearchForm';
+
 
 class Header extends Component {
   componentDidMount() {
@@ -24,8 +24,6 @@ class Header extends Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/favoritos">Favoritos</Link></li>
             </ul>
-
-            <SearchForm history={this.props.history} />
 
           </nav>
         </header>
