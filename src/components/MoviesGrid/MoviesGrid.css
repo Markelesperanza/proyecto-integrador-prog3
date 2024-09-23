@@ -8,25 +8,25 @@
 
 
 .movie-card {
-  background-color: #f0f0f0; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 200px; 
-  text-align: center; 
+  width: 200px; /* Define un ancho fijo para todas las tarjetas */
+  height: auto;
   overflow: hidden;
-  transition: transform 0.3s ease; 
-  flex: 1 1 200px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.movie-card img {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover; 
+}
+
 
 .movie-card:hover {
   transform: scale(1.05); 
-}
-
-
-.movie-card img {
-  width: 100%; 
-  height: auto; 
-  border-bottom: 1px solid #ddd;
 }
 
 

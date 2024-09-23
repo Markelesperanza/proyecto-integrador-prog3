@@ -144,8 +144,7 @@ class MoviesGrid extends Component {
                 </div>
                 <div className="movies-grid">
                     {movies.map((movie, index) => (
-                        <MoviesCard key={index} movie={movie} />
-
+                        <MoviesCard key={index} movie={movie} className="movie-card"/>
                     ))}
                 </div>
 

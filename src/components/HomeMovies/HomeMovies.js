@@ -22,7 +22,7 @@ class HomeMovies extends Component {
       .then((response) => response.json())
       .then((data) => {
         if (data && data.results) {
-          this.setState({ movies: data.results.slice(0, 4) 
+          this.setState({ movies: data.results.slice(0, 5) 
           }); 
         } else {
           this.setState({ 
@@ -43,7 +43,8 @@ class HomeMovies extends Component {
       <div className="home-movies">
         <div className="movies-list">
           {movies.length > 0 ? (
-            movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)
+            movies.map((movie) => 
+            <MoviesCard key={movie.id} movie={movie} />)
           ) : (
             <p>No se encontraron películas.</p>
           )}
