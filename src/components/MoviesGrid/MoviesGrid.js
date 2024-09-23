@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { options } from "../../options";
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Loader from '../Loader/Loader';
 import './MoviesGrid.css';
@@ -10,8 +9,8 @@ class MoviesGrid extends Component {
         super(props);
         this.state = {
             movies: [],
-            genres: [],
-            selectedGenre: '',
+            filteredMovies: [],
+            searchQuery: '',
             loading: true,
             error: null,
             currentPage: 1,
@@ -38,49 +37,25 @@ class MoviesGrid extends Component {
             });
 
 
-        const genresUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en-US`;
-
-        fetch(genresUrl, options)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    genres: data.genres,
-                });
-            })
-            .catch((error) => {
-                console.error('Error encontrando genres:', error);
-            });
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        const { url } = this.props;
-        const { selectedGenre } = this.state;
-
-        if (prevState.selectedGenre !== selectedGenre) {
-            const nuevoUrl = selectedGenre
-                ? `${url}&with_genres=${selectedGenre}`
-                : url;
-
-            fetch(nuevoUrl, options)
-                .then((response) => response.json())
-                .then((data) => {
-                    this.setState({ movies: data.results });
-                })
-                .catch((error) => {
-                    this.setState({ error });
-                    console.error('Error al actualizar las películas:', error);
-                });
-        }
-    }
-
-
-    GenreChange = (event) => {
-        const selectedGenre = event.target.value;
-        this.setState({ selectedGenre });
-
-
+        
     };
+    handleInputChange = (event) => {
+        const searchQuery = event.target.value.toLowerCase(); // Convertir a minúsculas para coincidencias insensibles a mayúsculas
+        this.setState({ searchQuery }, this.filterMovies); // Después de actualizar el estado, filtrar las películas
+    };
+
+    filterMovies = () => {
+        const { movies, searchQuery } = this.state;
+        const filteredMovies = movies.filter((movie) =>
+            movie.title.toLowerCase().includes(searchQuery) // Coincidencia parcial en el título
+        );
+        this.setState({ filteredMovies });
+    };
+
+
+
+    
+
 
     cargarMasPelis = () => {
         const { url } = this.props;
@@ -112,7 +87,7 @@ class MoviesGrid extends Component {
     };
 
     render() {
-        const { movies, genres, loading, error, selectedGenre } = this.state;
+        const { movies, loading, error, filteredMovies, searchQuery, } = this.state;
 
         if (loading) {
             return <Loader/>;
@@ -125,26 +100,27 @@ class MoviesGrid extends Component {
         return (
             <>
                 <div className="filter">
-                    <form>
-                        <label>Filtrar por género: </label>
-                        <select value={selectedGenre} onChange={this.GenreChange}>
-                            <option value="">Todos los géneros</option>
-                            {genres.map((genre, index) => (
-                                <option key={index} value={genre.id}>
-                                    {genre.name}
-                                </option>
-                            ))}
-                        </select>
-                        <Link to={`/filter/${selectedGenre}`}>
-                            <button type="button" disabled={!selectedGenre}>
-                                Filtrar
-                            </button>
-                        </Link>
-                    </form>
+                    <label>Filtra películas por nombre: </label>
+                    <input 
+                        type="text" 
+                        value={searchQuery} 
+                        onChange={this.handleInputChange} 
+                        placeholder="Escribe para buscar películas..." 
+                    />
+                </div>
+                <div className="movies-grid">
+                    {filteredMovies.length > 0 ? (
+                        filteredMovies.map((movie, index) => (
+                            <MoviesCard key={index} movie={movie} />
+                        ))
+                    ) : (
+                        <p>No se encontraron películas que coincidan con la búsqueda.</p>
+                    )}
                 </div>
                 <div className="movies-grid">
                     {movies.map((movie, index) => (
-                        <MoviesCard key={index} movie={movie} className="movie-card"/>
+                        <MoviesCard key={index} movie={movie} />
+
                     ))}
                 </div>
 

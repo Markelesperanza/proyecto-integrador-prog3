@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import Loader from '../components/Loader/Loader';
+import MoviesGrid from '../components/MoviesGrid/MoviesGrid'
 
 export class SearchResults extends Component {
 
@@ -41,12 +43,17 @@ export class SearchResults extends Component {
 
 
     render() {
-
+        const {moviesSearch, loading} = this.props
 
         return (
             <>
                 <section>
                 <p>Resultado de búsqueda: {this.props.location.state.query}</p>
+                    {loading ? (
+                        <Loader />  
+                    ) : (
+                        <MoviesGrid movies={moviesSearch} /> 
+                    )}
 
             </section>
 

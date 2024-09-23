@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import SearchForm from '../SearchForm/SearchForm';
 
@@ -35,4 +35,4 @@ class Header extends Component {
   };
 };
 
-export default withRouter(Header);
+export default Header;
