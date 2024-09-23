@@ -52,27 +52,18 @@ class MoviesGrid extends Component {
         this.setState({ filteredMovies });
     };
 
-
-
-    
-
-
     cargarMasPelis = () => {
         const { url } = this.props;
         const { currentPage, movies } = this.state;
-
+    
         fetch(`${url}&page=${currentPage + 1}`, options)
             .then((response) => response.json())
             .then((data) => {
-
-                const pelisActualizado = [];
-                for (let i = 0; i < movies.length; i++) {
-                    pelisActualizado.push(movies[i]);
-                }
-                for (let i = 0; i < data.results.length; i++) {
-                    pelisActualizado.push(data.results[i]);
-                }
-
+       
+                const pelisActualizado = movies
+                    .map((movie) => movie)
+                    .concat(data.results.map((result) => result));
+    
                 this.setState({
                     movies: pelisActualizado,
                     currentPage: currentPage + 1,
@@ -85,6 +76,7 @@ class MoviesGrid extends Component {
                 console.error('Error al cargar más películas:', error);
             });
     };
+    
 
     render() {
         const { movies, loading, error, filteredMovies, searchQuery, } = this.state;
