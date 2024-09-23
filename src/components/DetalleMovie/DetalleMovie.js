@@ -1,8 +1,9 @@
 import { Component } from "react";
 import { options } from "../../options";
 import Loader from "../Loader/Loader";
+import ButtonFav from "../ButtonFav/ButtonFav";
 
-class Detalle extends Component {
+class DetalleMovie extends Component {
 
     constructor(props) {
         super(props)
@@ -12,7 +13,7 @@ class Detalle extends Component {
     }
 
     componentDidMount() {
-        const { id } = this.props;
+        const { id } = this.props.match.params;
         const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
 
         fetch(url, options)
@@ -26,14 +27,22 @@ class Detalle extends Component {
     render() {
         const { movie } = this.state;
 
-            if(!movie) {
-                return <Loader/>;
-            }
+        if (!movie) {
+            return <Loader />;
+        }
 
         return (
             <div>
-                {/* <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} /> */}
+                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
                 <h2>{movie.title}</h2>
+                <p>{movie.vote_average}/10</p>
+                <p>Géneros:</p>
+                <ul>
+                    {movie.genres.map((genre) => (
+                        <li key={genre.id}>{genre.name}</li>
+                    ))}
+                </ul>
+                <ButtonFav pelicula={movie.id} />
             </div>
 
         );
@@ -41,4 +50,4 @@ class Detalle extends Component {
 
 }
 
-export default Detalle;
+export default DetalleMovie;

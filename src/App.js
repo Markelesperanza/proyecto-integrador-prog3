@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
-import Detalle from './pages/Detalle';
+import DetalleMovie from './components/DetalleMovie/DetalleMovie'
 import Populares from './pages/Populares'
 import Cartelera from './pages/Cartelera'
 //import Favoritos from './pages/Favoritos'; 
@@ -24,7 +24,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/" component={ Home } />
-            <Route path="/detalle/:id" component={ Detalle } />
+            <Route path="/detalle/:id" component={ DetalleMovie } />
             <Route path="/all-popular-movies" component={ Populares } />
             <Route path="/all-cartelera-movies" component={ Cartelera } />
             <Route path="/filter/:genreId" component={ FilterGenre } />
