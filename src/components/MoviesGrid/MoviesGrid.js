@@ -59,10 +59,11 @@ class MoviesGrid extends Component {
         fetch(`${url}&page=${currentPage + 1}`, options)
             .then((response) => response.json())
             .then((data) => {
-       
-                const pelisActualizado = movies
-                    .map((movie) => movie)
-                    .concat(data.results.map((result) => result));
+                
+                const pelisActualizado = [];
+                movies.map((movie) => pelisActualizado.push(movie));
+    
+                data.results.map((result) => pelisActualizado.push(result));
     
                 this.setState({
                     movies: pelisActualizado,
@@ -76,6 +77,7 @@ class MoviesGrid extends Component {
                 console.error('Error al cargar más películas:', error);
             });
     };
+    
     
 
     render() {
