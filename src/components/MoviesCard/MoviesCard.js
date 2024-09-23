@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './MoviesCard.css';
+import ButtonFav from '../ButtonFav/ButtonFav';
 
 class MoviesCard extends Component {
   constructor(props) {
@@ -7,9 +8,10 @@ class MoviesCard extends Component {
 
     this.state = {
       showDescription: false,
-      isFavorite: false
     };
   }
+
+  isFavorite
 
   toggleDescription = () => {
     this.setState(prevState => ({
@@ -17,15 +19,9 @@ class MoviesCard extends Component {
     }));
   };
 
-  toggleFavorite = () => {
-    this.setState(prevState => ({
-      isFavorite: !prevState.isFavorite
-    }));
-  };
-
   render() {
     const { movie } = this.props;
-    const { showDescription, isFavorite } = this.state;
+    const { showDescription } = this.state;
 
     return (
       <div className="movie-card">
@@ -47,9 +43,7 @@ class MoviesCard extends Component {
           <a href={`/detalle/${movie.id}`}>Ir a detalle</a>
         </button>
 
-        <button onClick={this.toggleFavorite}>
-          {isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-        </button>
+        <ButtonFav pelicula={this.props.movie.id} />
       </div>
     );
   }
