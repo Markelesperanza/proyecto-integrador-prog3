@@ -11,8 +11,6 @@ class MoviesCard extends Component {
     };
   }
 
-  isFavorite
-
   toggleDescription = () => {
     this.setState(prevState => ({
       showDescription: !prevState.showDescription
