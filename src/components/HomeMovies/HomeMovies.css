@@ -6,14 +6,6 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     max-width: 1600px
   }
-  
-.movies-list {
-  display: flex;
-  flex-wrap: wrap; 
-  gap: 20px; 
-  padding: 20px; 
-  justify-content: center;
-  }
 
 
 .error-message {

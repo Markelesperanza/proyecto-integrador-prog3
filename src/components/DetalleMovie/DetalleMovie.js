@@ -2,7 +2,6 @@ import { Component } from "react";
 import { options } from "../../options";
 import Loader from "../Loader/Loader";
 import ButtonFav from "../ButtonFav/ButtonFav";
-import './DetalleMovie.css'
 
 class DetalleMovie extends Component {
 
