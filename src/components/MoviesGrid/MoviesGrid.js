@@ -25,6 +25,7 @@ class MoviesGrid extends Component {
             .then((data) => {
                 this.setState({
                     movies: data.results,
+                    filteredMovies: data.results, 
                     loading: false
                 });
             })
@@ -37,20 +38,29 @@ class MoviesGrid extends Component {
             });
 
 
-        
+
     };
-    handleInputChange = (event) => {
-        const searchQuery = event.target.value.toLowerCase(); // Convertir a minúsculas para coincidencias insensibles a mayúsculas
-        this.setState({ searchQuery }, this.filterMovies); // Después de actualizar el estado, filtrar las películas
+    handleInputChange = (e) => {
+        const searchQuery = e.target.value.toLowerCase();
+        this.setState({ searchQuery }, this.filterMovies);
     };
 
     filterMovies = () => {
         const { movies, searchQuery } = this.state;
         const filteredMovies = movies.filter((movie) =>
-            movie.title.toLowerCase().includes(searchQuery) // Coincidencia parcial en el título
+            movie.title.toLowerCase().includes(searchQuery)
         );
         this.setState({ filteredMovies });
     };
+
+    handleResetFilter(){
+        this.setState({
+            searchQuery: "",
+            filteredMovies:this.state.movies
+        })
+
+    }
+
 
     cargarMasPelis = () => {
         const { url } = this.props;
@@ -67,6 +77,8 @@ class MoviesGrid extends Component {
     
                 this.setState({
                     movies: pelisActualizado,
+                    filteredMovies: pelisActualizado, 
+
                     currentPage: currentPage + 1,
                 });
             })
@@ -81,10 +93,10 @@ class MoviesGrid extends Component {
     
 
     render() {
-        const { movies, loading, error, filteredMovies, searchQuery, } = this.state;
+        const { loading, error, filteredMovies, searchQuery } = this.state;
 
         if (loading) {
-            return <Loader/>;
+            return <Loader />;
         }
 
         if (error) {
@@ -95,31 +107,30 @@ class MoviesGrid extends Component {
             <>
                 <div className="filter">
                     <label>Filtra películas por nombre: </label>
-                    <input 
-                        type="text" 
-                        value={searchQuery} 
-                        onChange={this.handleInputChange} 
-                        placeholder="Escribe para buscar películas..." 
+                    <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={(e)=>this.handleInputChange(e)}
+                        placeholder="Escribe para buscar películas..."
                     />
                 </div>
+                <button onClick={()=>this.handleResetFilter()}>Resetea el filtro</button>
+
                 <div className="movies-grid">
-                    {filteredMovies.length > 0 ? (
+                    {filteredMovies.length === 0 ? (
+                        <p>No se encontraron películas que coincidan con la búsqueda.</p>
+
+                    ) : (
                         filteredMovies.map((movie, index) => (
                             <MoviesCard key={index} movie={movie} />
                         ))
-                    ) : (
-                        <p>No se encontraron películas que coincidan con la búsqueda.</p>
-                    )}
+                    )
+                    }
                 </div>
-                <div className="movies-grid">
-                    {movies.map((movie, index) => (
-                        <MoviesCard key={index} movie={movie} />
-
-                    ))}
-                </div>
+               
 
                 <div className="load-more-container">
-                    <button onClick={this.cargarMasPelis} className="load-more-button">
+                    <button onClick={()=>this.cargarMasPelis()} className="load-more-button">
                         Cargar más
                     </button>
                 </div>

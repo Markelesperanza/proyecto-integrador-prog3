@@ -19,4 +19,59 @@ body, html {
       align-items: center;
     }
   }
+
+  .results-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    padding: 20px; 
+    justify-content: center;
+  }
+  
+  .result-card {
+    width: 200px; /* Define un ancho fijo para todas las tarjetas */  
+    min-height: 450px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .result-card img {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover; 
+  }
+  
+  .result-card:hover {
+    transform: scale(1.05); 
+  }
+  
+  .result-card h3 {
+    font-size: 16px; 
+    margin: 10px 0; 
+    color: #333; 
+  }
+  
+  .load-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .load-more-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .load-more-button:hover {
+    background-color: #2980b9;
+  }
+  
   
