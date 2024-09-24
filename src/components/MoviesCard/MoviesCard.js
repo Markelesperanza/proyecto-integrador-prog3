@@ -21,6 +21,8 @@ class MoviesCard extends Component {
 
   render() {
     const { movie } = this.props;
+    console.log(movie);
+    
     const { showDescription } = this.state;
 
     return (
@@ -43,7 +45,7 @@ class MoviesCard extends Component {
           <a href={`/detalle/${movie.id}`}>Ir a detalle</a>
         </button>
 
-        <ButtonFav pelicula={this.props.movie.id} />
+        <ButtonFav pelicula={movie.id} />
       </div>
     );
   }
