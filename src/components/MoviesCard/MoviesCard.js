@@ -19,7 +19,6 @@ class MoviesCard extends Component {
 
   render() {
     const { movie } = this.props;
-    console.log(movie);
     
     const { showDescription } = this.state;
 

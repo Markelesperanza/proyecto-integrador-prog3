@@ -4,13 +4,7 @@ import './Navbar.css'
 
 
 class Navbar extends Component {
-  componentDidMount() {
-    // Verifica si 'history' se está recibiendo correctamente en props
-    console.log('Header props:', this.props);
-    console.log('Header history:', this.props.history);
-}
   
-
   render() {
     return (
       <>
