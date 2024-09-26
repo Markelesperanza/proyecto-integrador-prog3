@@ -4,7 +4,7 @@ import { Component } from 'react';
 import HomeMovies from '../components/HomeMovies/HomeMovies'; 
 import SearchForm from '../components/SearchForm/SearchForm';
 
-export class Home extends Component {
+class Home extends Component {
 
   constructor(props) {
       super(props);
