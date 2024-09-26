@@ -11,8 +11,6 @@ class MoviesCard extends Component {
     };
   }
 
-  isFavorite
-
   toggleDescription = () => {
     this.setState(prevState => ({
       showDescription: !prevState.showDescription
@@ -21,6 +19,7 @@ class MoviesCard extends Component {
 
   render() {
     const { movie } = this.props;
+    
     const { showDescription } = this.state;
 
     return (
@@ -43,7 +42,7 @@ class MoviesCard extends Component {
           <a href={`/detalle/${movie.id}`}>Ir a detalle</a>
         </button>
 
-        <ButtonFav pelicula={this.props.movie.id} />
+        <ButtonFav pelicula={movie.id} />
       </div>
     );
   }

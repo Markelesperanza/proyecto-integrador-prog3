@@ -12,12 +12,6 @@ export class SearchForm extends Component {
         }
     }
 
-    componentDidMount() {
-        // Verifica si 'history' se está recibiendo correctamente en props
-        console.log('SearchForm props:', this.props);
-        console.log('SearchForm history:', this.props.history);
-    }
-
     handleInputChange = (event) => {
         this.setState({
             query: event.target.value,
@@ -29,10 +23,7 @@ export class SearchForm extends Component {
 
         if(query){
             this.props.history.push('/search', { query });
-        }else{
-            console.log('no se encontro la query');
-            
-        }
+        };
         
     };
 
