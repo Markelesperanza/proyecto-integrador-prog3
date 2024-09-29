@@ -4,7 +4,7 @@ import { options } from '../options';
 import MoviesCard from '../components/MoviesCard/MoviesCard';
 import '../../src/components/MoviesGrid/MoviesGrid.css'
 
-export class SearchResults extends Component {
+class SearchResults extends Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +16,6 @@ export class SearchResults extends Component {
     }
 
     componentDidMount() {
-        //const apiKey = 'eyJhbGciOiJIUzI1NiJ9eyJhdWQiOiJlNTc3M2JlNDMzNGVlM2UzZWE0ZjgxMTdiYWJkYzRmMSIsIm5iZiI6MTcyNTkwOTc2MC41OTIzNzQsInN1YiI6IjY2ZGY0OTJjYmUyMWY5MmNkYTllMDE2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GNaZ7hdiLbaBBVkUQA-EMkfBR99B4KgButNe_pVOWUk';
 
         const urlSearch = `https://api.themoviedb.org/3/search/movie?&language=en-US&query=${this.props.location.state.query}&page=1`;
 

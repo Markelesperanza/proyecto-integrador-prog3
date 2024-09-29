@@ -3,17 +3,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la ventana */
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .loading-container img {
-    width: 100px; /* Ajusta el tamaño del GIF según sea necesario */
+    width: 100px;
     height: auto;
-    margin-bottom: 20px; /* Espacio entre el GIF y el texto */
+    margin-bottom: 20px;
 }
 
 .loading-container p {
     font-size: 1.2em;
-    color: #333; /* Color del texto */
+    color: #333;
 }

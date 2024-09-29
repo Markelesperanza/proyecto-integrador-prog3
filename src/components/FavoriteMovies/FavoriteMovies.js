@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { options } from '../../options'; // Asegúrate de que tienes esta opción para las peticiones
+import { options } from '../../options';
 
 class FavoriteMovies extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import { Component } from 'react'
 
 import './SearchForm.css';
 
-export class SearchForm extends Component {
+class SearchForm extends Component {
 
     constructor(props) {
         super(props)

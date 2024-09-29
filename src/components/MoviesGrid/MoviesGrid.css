@@ -8,7 +8,7 @@
 
 
 .movie-card {
-  width: 200px; /* Define un ancho fijo para todas las tarjetas */  
+  width: 200px;
   min-height: 450px; 
   overflow: hidden;
   display: flex;
